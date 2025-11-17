@@ -1,0 +1,9 @@
+FROM eclipse-temurin:25-jdk
+
+WORKDIR /app
+
+COPY . /app
+
+RUN ./mvnw -q -e -DskipTests clean package || mvn -q -e -DskipTests clean package
+
+CMD ["java", "-cp", "target/classes", "org.example.Main"]
